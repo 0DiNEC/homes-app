@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
   template: `
   <main>
     <header class="brand-name">
-      <img src="./assets/logo.svg" alt="lo" class="brand-logo" aria-hidden="true">
+      <img src="./assets/logo.svg" alt="logo" class="brand-logo" aria-hidden="true">
     </header>
     <section class="content">
       <app-home></app-home>
