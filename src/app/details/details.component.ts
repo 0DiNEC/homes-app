@@ -32,11 +32,9 @@ import { HousingLocation } from '../housinglocation';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent {
-  route: ActivatedRoute = inject(ActivatedRoute);
-  housingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private housingService : HousingService) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
