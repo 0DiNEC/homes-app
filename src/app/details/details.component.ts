@@ -26,7 +26,7 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
       </section>
       <section class="listing-apply">
         <h2 class="section-heading">Apply now to live here</h2>
-        <form [formGroup]="applyForm">
+        <form [formGroup]="applyForm" (submit)="submitApplication()">
           <label for="first-name">First Name</label>
           <input id="first-name" type="text" formControlName="firstName">
 
@@ -53,5 +53,12 @@ export class DetailsComponent {
   constructor(private route: ActivatedRoute, private housingService: HousingService) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+  }
+  submitApplication() {
+    this.housingService.submitApplication(
+      this.applyForm.value.firstName?? '',
+      this.applyForm.value.lastName?? '',
+      this.applyForm.value.email?? ''
+    )
   }
 }
