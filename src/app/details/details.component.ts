@@ -52,7 +52,9 @@ export class DetailsComponent {
 
   constructor(private route: ActivatedRoute, private housingService: HousingService) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation : HousingLocation | undefined) => {
+      this.housingLocation = housingLocation;
+    })
   }
   submitApplication() {
     this.housingService.submitApplication(
